@@ -3,11 +3,10 @@ const http = require('../utils/http')
 
 const base = require('../utils/base')
 
-const host = base.base64_decode( require('../config').host.nrop19 )
-
-
+const config = require('../config')
 const data = {
   async list(page , cate){
+    let host = config.host('nrop19')
     let resp = await http.get(host+'v.php?page='+page+'&category='+cate)
     let data = []
     resp.replace(/viewkey=([0-9a-z]+)[^<]+?\s*<img\s+src="([^"]+?)"[\w\W]+?title="([^"]+?)"/g , ($0 , $1, $2, $3)=>{
@@ -23,6 +22,8 @@ const data = {
   },
 
   async detail(viewkey){
+    let host = config.host('nrop19')
+
     let resp = await http.get(host+'view_video.php?viewkey='+viewkey , true)
 
     let url = (resp.match(/source\s*src\s*=\s*"([^"]+)/) || ['',''])[1]

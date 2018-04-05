@@ -1,6 +1,16 @@
 const request = require('request')
 const base = require('./base')
 module.exports = {
+  header(url, opts){
+    opts = opts || {}
+    opts.url = url
+    return new Promise(function (resolve, reject) {
+      request(opts, function(error, response, body){
+          resolve(response)
+        })
+    })
+  },
+
 	get(url , fake){
 		let headers = {
 		    'Accept-Language':'zh-CN,zh;q=0.8',
