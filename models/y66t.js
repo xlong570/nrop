@@ -49,6 +49,7 @@ const data = {
 
     let resp = await http.get(host+'thread0806.php?fid=22&page='+page,{encoding:null})
 
+    console.log(host+'thread0806.php?fid=22&page='+page)
     resp = iconv.decode(resp, 'gb2312').toString()
 
     let data = []

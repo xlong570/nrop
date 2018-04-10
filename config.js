@@ -4,9 +4,10 @@ class Lancher {
   constructor(){
     this.port = 3002
     this._host = {
-      'y66t':'http://www.t66y.com/'
+      'y66t':'http://www.t66y.com/',
+      'nrop19':'http://www.91porn.com/'
     }
-    this.init_nrop19()
+    //this.init_nrop19()
   }
 
   async init_nrop19(){
