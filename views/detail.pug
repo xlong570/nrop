@@ -3,7 +3,7 @@ extends layout
 block content
   include header
   .content
-    video.video-responsive(src=data.url,controls="controls",autoplay="autoplay")
+    iframe(src="javascript:'<style>video{width:100%;height:100%;background:#000;}body{margin:0;padding:0;}</style><video src=\""+data.url+"\" controls=\"controls\" autoplay=\"autoplay\"></video>'")
     a.btn(href='?p=1') 中继
   include footer
 

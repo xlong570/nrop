@@ -24,7 +24,14 @@ const getRealUrl = async (url) =>{
     if(/^http/.test(url) == false){
       url = url.replace(/[\w\W]+http/,'http')
     }
-    return url
+    // return url
+    // return url
+    let h = await http.header(url,{followRedirect:false})
+    if( h.headers && h.headers.location ){
+      return h.headers.location
+    }else{
+      return url
+    }
   }
   //ppptoppp.com
   else if(resp.indexOf('tm-video-play-box')>= 0){
@@ -49,9 +56,7 @@ const data = {
 
     let resp = await http.get(host+'thread0806.php?fid=22&page='+page,{encoding:null})
 
-    console.log(host+'thread0806.php?fid=22&page='+page)
     resp = iconv.decode(resp, 'gbk').toString()
-
     let data = []
     resp.split('tr2').pop().replace(/class="tal"[^>]+?>([^<]+?)<h3><a\s+href="([^"]+)[^>]+?>([\w\W]+?)<\/a>/g , ($0 , $1 , $2 , $3) =>{
       
