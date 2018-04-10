@@ -50,10 +50,9 @@ const data = {
     let resp = await http.get(host+'thread0806.php?fid=22&page='+page,{encoding:null})
 
     console.log(host+'thread0806.php?fid=22&page='+page)
-    resp = iconv.decode(resp, 'gb2312').toString()
+    resp = iconv.decode(resp, 'gbk').toString()
 
     let data = []
-    console.log(resp)
     resp.split('tr2').pop().replace(/class="tal"[^>]+?>([^<]+?)<h3><a\s+href="([^"]+)[^>]+?>([\w\W]+?)<\/a>/g , ($0 , $1 , $2 , $3) =>{
       
       // let de = $3.split(/[\[\]]/g)
