@@ -24,7 +24,7 @@ const data = {
   async detail(viewkey){
     let host = config.host('nrop19')
 
-    let resp = await http.get(host+'view_video.php?viewkey='+viewkey , true)
+    let resp = await http.get(host+'view_video.php?viewkey='+viewkey , {fake:true})
 
     let url = (resp.match(/source\s*src\s*=\s*"([^"]+)/) || ['',''])[1]
 

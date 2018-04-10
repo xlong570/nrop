@@ -1,22 +1,12 @@
-const service = require('./../models/nrop19')
+const service = require('./../models/y66t')
 const base = require('../utils/base')
 const request = require('request')
 const channals = require('../channals')
-
-
 const cats = [
-  {title:'默认',key:''},
-  {title:'当前最热',key:'hot'},
-  {title:'最近得分',key:'rp'},
-  {title:'10分钟以上',key:'long'},
-  {title:'最近加精',key:'rf'},
-  {title:'本月最热',key:'top'},
-  {title:'本月收藏',key:'tf'},
-  {title:'收藏最多',key:'mf'},
-  {title:'高清',key:'md'},
+  
 ]
 
-const channal = 'nrop19'
+const channal = 'y66t'
 
 module.exports = {
 

@@ -11,18 +11,25 @@ module.exports = {
     })
   },
 
-	get(url , fake){
+  
+	get(url , opts ){
+    opts = opts || {}
 		let headers = {
 		    'Accept-Language':'zh-CN,zh;q=0.8',
 		}
-    if(fake){
+
+    if(opts.fake){
+      delete opts.fake
       let rndip = base.ip()
       headers['PHPSESSID'] = 'fsef'
       headers['CLIENT-IP'] = rndip
       headers['HTTP_X_FORWARDED_FOR'] = rndip
     }
+    opts.headers = headers
+    opts.url = url
+    
 		return new Promise(function (resolve, reject) {
-			request({url ,headers}, function(error, response, body){
+			request(opts, function(error, response, body){
 		      if (!error && response.statusCode == 200) {
 		        resolve(body)
 		      }else{

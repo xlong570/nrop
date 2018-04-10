@@ -3,7 +3,7 @@ extends layout
 block content
   header
   
-  section.video
+  section.video(channal=channal)
     .cats
       each item in channals
         a(href='/page/'+item.key+'/list',class=channal==item.key ? 'active':'') #{item.title}
@@ -22,8 +22,9 @@ block content
       ul
         each item in data
           li
-            a(href='/page/nrop19/'+item.viewkey)
-              .thumb(style="background-image:url("+item.img+")")
+            a(href='/page/'+channal+'/'+item.viewkey,title=item.title)
+              -if(item.img)
+                .thumb(style="background-image:url("+item.img+")")
               .cnt
                 span.title #{item.title}
   script.

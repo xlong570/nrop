@@ -3,11 +3,16 @@ const http = require('./utils/http')
 class Lancher {
   constructor(){
     this.port = 3002
-    this._host = {}
+    this._host = {
+      'y66t':'http://www.t66y.com/'
+    }
     this.init_nrop19()
   }
 
   async init_nrop19(){
+
+    let t = await http.header('https://drive.google.com/uc?id=1KK2bf23j9XkoyDdaRgvtkOXxDppE-Nsj&export=download')
+    console.log(t)
     let body = await http.get('https://www.ebay.com/usr/91dizhi_1')
 
     let url = body.match(/[=]{6}([^=])+[=]{6}/)[0].match(/[\w]+\.[\w]+\.[\w]+/)[0]

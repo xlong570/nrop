@@ -1,3 +1,4 @@
+const iconv = require('iconv-lite')
 
 function rnd(min , max){
   return Math.floor(min+Math.random()*(max-min));  
@@ -27,5 +28,10 @@ module.exports = {
 
   base64_decode(v){
     return new Buffer(v, 'base64').toString()
+  },
+
+  gb2utf8(v){
+    // console.log(v)
+    return iconv.encode(v , 'gb2312').toString()
   }
 }
