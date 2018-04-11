@@ -23,11 +23,11 @@ module.exports = {
   },
 
   base64_encode(v){
-    return new Buffer(v).toString('base64')
+    return new Buffer(v).toString('base64').replace(/\//g,'_')
   },
 
   base64_decode(v){
-    return new Buffer(v, 'base64').toString()
+    return new Buffer(v.replace(/_/g,'/'), 'base64').toString()
   },
 
   gb2utf8(v){

@@ -1,6 +1,7 @@
 ## Gitignore by github
 ## -------------------
 
+*.css
 build/
 # Logs
 logs

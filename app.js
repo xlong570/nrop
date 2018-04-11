@@ -14,6 +14,8 @@ const routers = require('./routers/index')
 const cors = require('@koa/cors');
 
 
+const proxy = require('./utils/proxy')
+
 const app = new Koa()
 
 onerror(app)
@@ -62,5 +64,8 @@ app.use(async (ctx) => {
       break;
   }
 })
+
+// proxy.start(5002)
+
 
 module.exports = app

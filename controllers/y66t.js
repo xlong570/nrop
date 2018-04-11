@@ -58,12 +58,12 @@ module.exports = {
 
   async detailPage(ctx){
     let {id} = ctx.params
-    let proxy = ctx.query.p
+    let proxy = ctx.query.p == 1
     let data = await service.detail(id)
 
-    if(proxy) data.url = '/api/nrop19/play/' + base.base64_encode(data.url)
+    if(proxy) data.url = '/api/proxy/play/' + base.base64_encode(data.url)
     await ctx.render('detail',{
-      data
+      data , proxy
     })
 
   },

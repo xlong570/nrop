@@ -46,6 +46,8 @@ const getRealUrl = async (url) =>{
   else if(resp.indexOf('Aliplayer')>=0){
     let url = resp.match(/source:"([^'"]+)/)[1]
     return url
+  }else{
+    return ''
   }
 
 }
