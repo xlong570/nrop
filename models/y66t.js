@@ -5,9 +5,15 @@ const base = require('../utils/base')
 
 const config = require('../config')
 
+const cache = require('../utils/cache')
+
 const iconv = require('iconv-lite')
 
-
+const getRealKtplayerUrl = async (url) =>{
+  // http://www.fcw45.com/player/kt_player.js?v=23.9.0
+  let code = http.get('http://www.fcw45.com/player/kt_player.js?v=23.9.0')
+  let exec_code = code + ';'
+}
 const getRealUrl = async (url) =>{
   let resp = await http.get(url , {fake : true})
 
@@ -22,7 +28,7 @@ const getRealUrl = async (url) =>{
   else if(resp.indexOf('getEmbed')>=0){
     let url = resp.match(/video_url\s*:\s*['"]([^'"]+)/)[1]
     if(/^http/.test(url) == false){
-      url = url.replace(/[\w\W]+http/,'http')
+      return '' //url = url.replace(/[\w\W]+http/,'http')
     }
     // return url
     // return url
@@ -76,6 +82,10 @@ const data = {
   },
 
   async detail(viewkey){
+    if(cache[viewkey]){
+      return cache[viewkey]
+    }
+
     let host = config.host('y66t')
     let url = base.base64_decode(viewkey.replace(/_/g,'/'))
     if( url.indexOf('read.php') >= 0 ){
@@ -93,6 +103,9 @@ const data = {
     
 
     let realurl = await getRealUrl(url)
+
+    cache.set(viewkey , {url:realurl})
+
     return {  url:realurl  }
   },
 

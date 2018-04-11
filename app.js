@@ -14,7 +14,7 @@ const routers = require('./routers/index')
 const cors = require('@koa/cors');
 
 
-const proxy = require('./utils/proxy')
+// const proxy = require('./utils/proxy')
 
 const app = new Koa()
 
